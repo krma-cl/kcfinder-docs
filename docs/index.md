@@ -16,38 +16,10 @@ outline: false
         <a class="kf-button-secondary" href="https://github.com/krma-cl/kcfinder-Resurrected">Ver en GitHub ↗</a>
       </div>
     </div>
-    <div class="kf-browser" aria-label="Vista conceptual del selector de archivos KCFinder">
-      <div class="kf-browser-toolbar">
-        <strong>+</strong>
-        <span>Subir</span>
-        <span>Nueva carpeta</span>
-        <span>Actualizar</span>
-        <span class="kf-browser-search">Buscar archivos…</span>
-      </div>
-      <div class="kf-browser-body">
-        <div class="kf-browser-tree">
-          <b>Carpetas</b>
-          <div class="kf-tree-item">▾ public</div>
-          <div class="kf-tree-item selected">&nbsp;&nbsp;▾ images</div>
-          <div class="kf-tree-item">&nbsp;&nbsp;&nbsp;&nbsp;avatars</div>
-          <div class="kf-tree-item">&nbsp;&nbsp;&nbsp;&nbsp;logos</div>
-          <div class="kf-tree-item">▸ documents</div>
-          <div class="kf-tree-item">▸ uploads</div>
-        </div>
-        <div class="kf-browser-list">
-          <b>Nombre</b>
-          <div class="kf-file-row selected"><span>✓</span><strong>hero.jpg</strong><span>142 KB</span></div>
-          <div class="kf-file-row"><span>□</span><span>logo.svg</span><span>18 KB</span></div>
-          <div class="kf-file-row"><span>□</span><span>banner.png</span><span>312 KB</span></div>
-          <div class="kf-file-row"><span>□</span><span>document.pdf</span><span>1.2 MB</span></div>
-          <div class="kf-file-row"><span>□</span><span>notes.txt</span><span>1 KB</span></div>
-        </div>
-        <div class="kf-browser-json">
-          <b>Selector JSON</b>
-          <pre><code>&#123;<br>&nbsp;&nbsp;&quot;name&quot;: &quot;hero.jpg&quot;,<br>&nbsp;&nbsp;&quot;path&quot;: &quot;/images/hero.jpg&quot;,<br>&nbsp;&nbsp;&quot;url&quot;: &quot;/storage/images/hero.jpg&quot;,<br>&nbsp;&nbsp;&quot;mime&quot;: &quot;image/jpeg&quot;,<br>&nbsp;&nbsp;&quot;size&quot;: 145408<br>&#125;</code></pre>
-        </div>
-      </div>
-    </div>
+    <figure class="kf-product-shot">
+      <img src="/kcfinder-bootstrap5-interface.png" alt="Interfaz real de KCFinder Resurrected con el tema Bootstrap 5: árbol de carpetas, barra de acciones, opciones de visualización y selector de idioma." />
+      <figcaption>Interfaz real del tema Bootstrap 5</figcaption>
+    </figure>
   </section>
 
   <section class="kf-pathways">
