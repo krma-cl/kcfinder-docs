@@ -6,12 +6,12 @@ El adaptador oficial conecta Laravel Storage, Gates y eventos con el selector in
 
 - PHP 8.2 o superior.
 - Laravel 12 o 13.
-- Navegador KCFinder desplegado mediante una publicación web controlada.
+- KCFinder 4.6 o superior desplegado mediante una publicación web controlada.
 
 ## 1. Instalar el adaptador
 
 ```bash
-composer require krma-cl/kcfinder-laravel:^1.1
+composer require krma-cl/kcfinder-laravel:^1.2
 php artisan vendor:publish --tag=kcfinder-config
 ```
 
@@ -110,8 +110,36 @@ return response()->json($result, $result->httpStatus());
 Esto permite sincronizar catálogos y auditorías por evento sin volver a recorrer todos los archivos.
 
 ::: warning Compatibilidad
-El formato estructurado es optativo. La versión 1.1 no altera automáticamente las respuestas históricas ni el JavaScript del navegador: conecta los métodos `report*` en los callbacks de la integración que ya se ejecutan después de una operación exitosa.
+El formato estructurado es optativo y no altera las respuestas históricas ni el JavaScript del navegador. Los métodos `report*` siguen disponibles para endpoints JSON propios.
 :::
+
+## 7. Conectar automáticamente el navegador clásico
+
+KCFinder 4.6 notifica sus operaciones mediante un observador neutral. El adaptador 1.2 registra un puente que toma snapshots y emite los eventos Laravel automáticamente.
+
+Si el navegador clásico se ejecuta dentro de una aplicación Laravel ya inicializada, agrega en `conf/config.local.php`:
+
+```php
+use KCFinder\Contract\OperationObserverInterface;
+
+$_LOCALS['_operationObserver'] = app(OperationObserverInterface::class);
+```
+
+El puente cubre:
+
+- cargas normales, múltiples y mediante arrastre;
+- edición y recorte de imágenes;
+- movimiento, renombrado y eliminación;
+- creación de carpetas;
+- operaciones masivas, con un evento por archivo exitoso.
+
+Mover, renombrar y eliminar capturan el snapshot autorizado antes de modificar el almacenamiento. Si un listener secundario falla, KCFinder registra el error, pero no responde falsamente que la operación principal fracasó.
+
+::: warning Evita eventos duplicados
+Cuando el puente automático esté habilitado, no llames además a `reportUploaded()`, `reportRenamed()` u otro método `report*` para la misma operación.
+:::
+
+Si `browse.php` todavía funciona como un script completamente independiente, mantenlo detrás de autenticación y utiliza temporalmente los métodos explícitos. No inicialices Laravel por segunda vez desde `config.local.php`.
 
 ::: tip Seguridad
 El Gate se evalúa antes de resolver metadatos del archivo. Mantén la autorización en el servidor aunque la interfaz oculte operaciones.

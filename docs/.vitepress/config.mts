@@ -95,6 +95,7 @@ export default defineConfig({
           items: [
             { text: 'Visión general', link: '/integrations/' },
             { text: 'Selector JSON', link: '/integrations/selector-json' },
+            { text: 'Eventos de operaciones', link: '/integrations/operation-events' },
             { text: 'CKEditor y TinyMCE', link: '/integrations/editors' }
           ]
         }
