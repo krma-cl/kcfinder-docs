@@ -7,7 +7,7 @@ El núcleo independiente expone contratos modernos sin depender de Laravel o Sym
 | Integración | Paquete | Responsabilidad |
 |---|---|---|
 | Standalone PHP | ZIP tradicional | Sesión, configuración y publicación directa. |
-| Laravel | `krma-cl/kcfinder-laravel` | Storage, Gates, configuración y eventos. |
+| Laravel | `krma-cl/kcfinder-laravel` | Storage, Gates, URLs públicas/temporales, respuestas JSON y eventos de archivos. |
 | Symfony | `krma-cl/kcfinder-symfony-bundle` | Flysystem, Voters, servicios y eventos. |
 
 ## Integraciones de editores
