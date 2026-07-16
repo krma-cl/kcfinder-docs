@@ -30,3 +30,5 @@ El roadmap describe una dirección, no una promesa de fechas. Las prioridades se
 ## Seguimiento
 
 Los [issues del núcleo](https://github.com/krma-cl/kcfinder-Resurrected/issues) son el registro operativo. Un GitHub Project se incorporará cuando el volumen de iniciativas cruzadas justifique una vista adicional; por ahora, evitar esa capa mantiene el mantenimiento claro y liviano.
+
+Quienes coordinen cambios entre componentes deben consultar la [guía para mantenedores e instancias de trabajo](maintainer-guide.md), que identifica el repositorio responsable, los límites de arquitectura y las validaciones requeridas.
