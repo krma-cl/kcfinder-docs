@@ -132,7 +132,6 @@ export default defineConfig({
           text: 'Proyecto',
           items: [
             { text: 'Roadmap', link: '/roadmap/' },
-            { text: 'Guía para mantenedores', link: '/roadmap/maintainer-guide' },
             { text: 'Contribuir', link: '/roadmap/contributing' }
           ]
         }
