@@ -11,7 +11,7 @@ El adaptador oficial conecta Laravel Storage, Gates y eventos con el selector in
 ## 1. Instalar el adaptador
 
 ```bash
-composer require krma-cl/kcfinder-laravel:^1.2
+composer require krma-cl/kcfinder-laravel:^1.2.1
 php artisan vendor:publish --tag=kcfinder-config
 ```
 

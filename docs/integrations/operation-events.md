@@ -20,7 +20,7 @@ Si un observador falla después de una mutación, KCFinder registra el error y c
 
 ## Laravel
 
-El adaptador `krma-cl/kcfinder-laravel:^1.2` incluye el puente oficial. Cuando el navegador se ejecuta dentro de Laravel, basta registrar la implementación proporcionada por el contenedor:
+El adaptador `krma-cl/kcfinder-laravel:^1.2.1` incluye el puente oficial. Cuando el navegador se ejecuta dentro de Laravel, basta registrar la implementación proporcionada por el contenedor:
 
 ```php
 use KCFinder\Contract\OperationObserverInterface;
