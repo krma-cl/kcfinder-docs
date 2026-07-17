@@ -75,6 +75,7 @@ export default defineConfig({
           text: 'Configuración',
           items: [
             { text: 'Visión general', link: '/configuration/' },
+            { text: 'Búsqueda', link: '/configuration/search' },
             { text: 'Uploads y URLs', link: '/configuration/storage' },
             { text: 'Imágenes y miniaturas', link: '/configuration/images' }
           ]

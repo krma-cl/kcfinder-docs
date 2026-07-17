@@ -7,6 +7,8 @@ description: Instalación y activación del tema Bootstrap 5 para KCFinder.
 
 El paquete `krma-cl/kcfinder-bootstrap5-theme` ofrece una interfaz responsiva y moderna para KCFinder 4.x. Incluye localmente Bootstrap 5.3 y Bootstrap Icons; no realiza peticiones a CDN.
 
+La versión `0.2.0` agrega la presentación de la búsqueda de KCFinder 4.7, restaura el separador redimensionable entre carpetas y archivos y afina la alineación de controles e iconos.
+
 ## Instalación manual
 
 1. Descarga una versión estable desde [Releases](https://github.com/krma-cl/kcfinder-bootstrap5-theme/releases).
@@ -37,6 +39,8 @@ Sustituye únicamente `themes/bootstrap5` por la nueva distribución y limpia lo
 ## Comprobaciones recomendadas
 
 - Barra superior y panel lateral en escritorio y móvil.
+- Buscador, limpieza, estados y filtrado de la carpeta activa cuando se use KCFinder 4.7 o superior.
+- Separador redimensionable entre el árbol y los archivos en escritorio.
 - Radios, checkboxes y selector de idioma.
 - Modos lista y miniaturas.
 - Menús contextuales, preferencias y ventanas modales.
