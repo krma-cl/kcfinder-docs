@@ -24,11 +24,11 @@ outline: false
 
   <section class="kf-release">
     <div>
-      <span class="kf-release-label">Novedad · KCFinder 4.8 + Laravel 1.3</span>
-      <h2>Operaciones observables e integración autenticada.</h2>
-      <p>El navegador Laravel oficial resuelve sesión y CSRF desde la primera visita, mientras los eventos cubren copias y operaciones recursivas de carpetas.</p>
+      <span class="kf-release-label">Novedad · KCFinder 4.9 + tema 0.3.1</span>
+      <h2>Temas Composer sin modificar vendor.</h2>
+      <p>Standalone, Laravel y Symfony pueden instalar o montar el tema Bootstrap 5 desde su paquete independiente, conservando el núcleo ligero.</p>
     </div>
-    <a href="./guide/laravel">Ver la integración Laravel →</a>
+    <a href="./themes/bootstrap5">Ver instalación del tema →</a>
   </section>
 
   <section class="kf-pathways">
