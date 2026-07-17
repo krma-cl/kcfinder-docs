@@ -16,6 +16,7 @@ La configuración efectiva depende de la versión instalada. Este mapa resume la
 | `maxImageWidth` / `maxImageHeight` | Límites de imágenes | Ajustar a las necesidades reales de la aplicación |
 | `thumbWidth` / `thumbHeight` | Miniaturas | Dimensionar considerando calidad, memoria y volumen |
 | `theme` | Tema visual activo | Usar `default` o un tema instalado y probado |
+| `search` | Búsqueda por nombre | Mantener desactivada o definir límites acordes al volumen |
 | `cookieDomain` | Alcance de cookies | Configurar un dominio, nunca un host con puerto |
 
 ## Configuración local
@@ -30,6 +31,11 @@ return array(
     'uploadURL' => '/storage/uploads',
     'uploadDir' => '/var/www/storage/uploads',
     'theme' => 'bootstrap5',
+    'search' => array(
+        'enabled' => true,
+        'minChars' => 2,
+        'maxResults' => 100,
+    ),
 );
 ```
 
@@ -37,4 +43,4 @@ return array(
 `disabled => false` no reemplaza la autenticación. La aplicación anfitriona debe habilitar KCFinder únicamente después de verificar al usuario y sus permisos.
 :::
 
-Consulta también [uploads y URLs](../configuration/storage), [imágenes y miniaturas](../configuration/images) y la configuración del release instalado en [GitHub](https://github.com/krma-cl/kcfinder-Resurrected/tree/master/conf).
+Consulta también [búsqueda](../configuration/search), [uploads y URLs](../configuration/storage), [imágenes y miniaturas](../configuration/images) y la configuración del release instalado en [GitHub](https://github.com/krma-cl/kcfinder-Resurrected/tree/master/conf).

@@ -17,6 +17,7 @@ KCFinder mantiene la configuración tradicional en PHP y permite que la aplicaci
 | `uploadURL` | URL pública o controlada que representa el almacenamiento. |
 | `uploadDir` | Ruta física confinada donde se administran archivos. |
 | `theme` | Tema visual activo, por ejemplo `default` o `bootstrap5`. |
+| `search` | Búsqueda optativa por nombre, con límites de resultados, recorrido y tiempo. |
 | `types` | Reglas de extensiones, MIME, tamaños y dimensiones por tipo de archivo. |
 
 ## Configuración por sesión
@@ -34,4 +35,4 @@ $_SESSION['KCFINDER'] = [
 `uploadURL` se entrega al navegador. `uploadDir` sólo debe utilizarse en el servidor y nunca debe filtrarse en respuestas o mensajes de error.
 :::
 
-Continúa con [uploads y URLs](./storage) o revisa la [referencia de configuración](../reference/configuration).
+Continúa con [búsqueda de carpetas y archivos](./search), [uploads y URLs](./storage) o revisa la [referencia de configuración](../reference/configuration).

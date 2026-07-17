@@ -16,6 +16,8 @@ KCFinder Resurrected busca ser una continuación mantenida, orientada a segurida
 - Adaptadores oficiales para Laravel y Symfony.
 - Tema responsivo Bootstrap 5, opcional y versionado por separado.
 - Portal unificado de documentación.
+- Búsqueda optativa por nombre de carpetas y archivos, limitada y protegida con CSRF.
+- Recorte robusto ante coordenadas decimales y tema Bootstrap 5 con separador redimensionable.
 
 ## Próximas líneas
 
@@ -24,6 +26,8 @@ KCFinder Resurrected busca ser una continuación mantenida, orientada a segurida
 - Documentar extensiones y puntos estables del núcleo.
 - Mejorar la guía de migración desde instalaciones históricas personalizadas.
 - Mantener matrices de compatibilidad y avisos de nuevas versiones tecnológicas.
+- Preparar jQuery 4 y jQuery UI 1.14 en una fase separada, reemplazando primero las APIs retiradas sin romper jQuery 3.7.
+- Eliminar gradualmente los XHR síncronos mediante flujos asíncronos probados, no mediante un cambio mecánico de bandera.
 
 El roadmap describe una dirección, no una promesa de fechas. Las prioridades se ajustan según seguridad, compatibilidad, uso real y contribuciones de la comunidad.
 

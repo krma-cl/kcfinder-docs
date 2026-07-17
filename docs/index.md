@@ -22,6 +22,15 @@ outline: false
     </figure>
   </section>
 
+  <section class="kf-release">
+    <div>
+      <span class="kf-release-label">Novedad · KCFinder 4.7</span>
+      <h2>Encuentra carpetas y archivos sin perder el contexto.</h2>
+      <p>La búsqueda optativa filtra el árbol y la carpeta activa, incorpora límites de rendimiento y funciona también con el tema Bootstrap 5 actualizado.</p>
+    </div>
+    <a href="./configuration/search">Configurar la búsqueda →</a>
+  </section>
+
   <section class="kf-pathways">
     <h2 class="kf-section-heading">Elige cómo integrarlo</h2>
     <div class="kf-pathway-list">
