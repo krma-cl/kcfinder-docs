@@ -12,7 +12,7 @@ El núcleo permanece instalable como una aplicación PHP independiente. Los adap
 | Núcleo | [`krma-cl/kcfinder`](https://packagist.org/packages/krma-cl/kcfinder) | PHP 8.2–8.5 |
 | Laravel | [`krma-cl/kcfinder-laravel`](https://packagist.org/packages/krma-cl/kcfinder-laravel) | Laravel 12–13 |
 | Symfony | [`krma-cl/kcfinder-symfony-bundle`](https://packagist.org/packages/krma-cl/kcfinder-symfony-bundle) | Symfony 7.4–8.x, Flysystem 3 |
-| Tema Bootstrap 5 | [`kcfinder-bootstrap5-theme`](https://github.com/krma-cl/kcfinder-bootstrap5-theme) | KCFinder 4.x |
+| Tema Bootstrap 5 | [`krma-cl/kcfinder-bootstrap5-theme`](https://packagist.org/packages/krma-cl/kcfinder-bootstrap5-theme) | KCFinder 4.x |
 | Documentación | [`kcfinder-docs`](https://github.com/krma-cl/kcfinder-docs) | VitePress / GitHub Pages |
 
 Las restricciones exactas pueden cambiar entre releases. Antes de actualizar, revisa siempre `composer.json`, las notas de versión y la matriz de pruebas del componente que usarás.

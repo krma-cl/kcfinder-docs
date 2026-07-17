@@ -24,11 +24,11 @@ outline: false
 
   <section class="kf-release">
     <div>
-      <span class="kf-release-label">Novedad · KCFinder 4.7</span>
-      <h2>Encuentra carpetas y archivos sin perder el contexto.</h2>
-      <p>La búsqueda optativa filtra el árbol y la carpeta activa, incorpora límites de rendimiento y funciona también con el tema Bootstrap 5 actualizado.</p>
+      <span class="kf-release-label">Novedad · KCFinder 4.8 + Laravel 1.3</span>
+      <h2>Operaciones observables e integración autenticada.</h2>
+      <p>El navegador Laravel oficial resuelve sesión y CSRF desde la primera visita, mientras los eventos cubren copias y operaciones recursivas de carpetas.</p>
     </div>
-    <a href="./configuration/search">Configurar la búsqueda →</a>
+    <a href="./guide/laravel">Ver la integración Laravel →</a>
   </section>
 
   <section class="kf-pathways">

@@ -1,14 +1,14 @@
 # Eventos de operaciones
 
-KCFinder 4.6 incorpora un observador neutral y optativo en los puntos de éxito del navegador clásico. Permite integrar auditoría, catálogos o eventos de frameworks sin modificar `browser.php` ni recorrer nuevamente todo el almacenamiento.
+KCFinder incorpora un observador neutral y optativo en los puntos de éxito del navegador clásico. Permite integrar auditoría, catálogos o eventos de frameworks sin modificar `browser.php` ni recorrer nuevamente todo el almacenamiento.
 
 ## Operaciones cubiertas
 
 - carga directa, múltiple, AJAX y mediante arrastre;
 - edición y recorte de imágenes;
-- movimiento y renombrado;
+- copia, movimiento y renombrado;
 - eliminación;
-- creación de carpetas.
+- creación, renombrado y eliminación recursiva de carpetas.
 
 Mover, renombrar y eliminar notifican una fase previa para capturar el estado anterior. Las operaciones masivas emiten una notificación individual solamente para cada archivo que fue modificado correctamente.
 
@@ -20,14 +20,21 @@ Si un observador falla después de una mutación, KCFinder registra el error y c
 
 ## Laravel
 
-El adaptador `krma-cl/kcfinder-laravel:^1.2.1` incluye el puente oficial. Cuando el navegador se ejecuta dentro de Laravel, basta registrar la implementación proporcionada por el contenedor:
+El adaptador `krma-cl/kcfinder-laravel:^1.3.1` incluye el puente oficial. Al
+habilitar su ruta HTTP autenticada, el paquete inyecta automáticamente la
+implementación proporcionada por el contenedor mediante la configuración de
+ejecución confiable de KCFinder 4.8.1:
 
 ```php
-use KCFinder\Contract\OperationObserverInterface;
-
-$_LOCALS['_operationObserver'] = app(OperationObserverInterface::class);
+'http' => [
+    'enabled' => true,
+    'middleware' => ['web', 'auth', 'can:manage-files'],
+],
 ```
 
-El puente toma snapshots autorizados y emite `FileUploaded`, `FileEdited`, `FileMoved`, `FileRenamed`, `FileDeleted` y `DirectoryCreated` con metadatos, checksum y usuario autenticado.
+El puente toma snapshots autorizados y emite `FileUploaded`, `FileEdited`,
+`FileCopied`, `FileMoved`, `FileRenamed`, `FileDeleted`, `DirectoryCreated`,
+`DirectoryRenamed` y `DirectoryDeleted` con metadatos, checksum y usuario
+autenticado.
 
 [Ver la guía completa de Laravel →](../guide/laravel)

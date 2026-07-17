@@ -7,7 +7,27 @@ description: Instalación y activación del tema Bootstrap 5 para KCFinder.
 
 El paquete `krma-cl/kcfinder-bootstrap5-theme` ofrece una interfaz responsiva y moderna para KCFinder 4.x. Incluye localmente Bootstrap 5.3 y Bootstrap Icons; no realiza peticiones a CDN.
 
-La versión `0.2.0` agrega la presentación de la búsqueda de KCFinder 4.7, restaura el separador redimensionable entre carpetas y archivos y afina la alineación de controles e iconos.
+La versión `0.3.0` también se distribuye mediante Composer e incluye
+`VERSION` y un manifiesto reproducible con hashes SHA-256. Conserva la
+presentación de búsqueda, el separador redimensionable y los ajustes visuales
+de la versión anterior.
+
+## Instalación con Composer
+
+```bash
+composer require krma-cl/kcfinder-bootstrap5-theme:^0.3
+```
+
+En Laravel 12 o 13, el adaptador 1.3.1 puede publicarlo automáticamente:
+
+```bash
+php artisan kcfinder:install-assets
+php artisan kcfinder:clear-cache
+```
+
+En una instalación independiente, copia
+`vendor/krma-cl/kcfinder-bootstrap5-theme/dist/bootstrap5` a
+`themes/bootstrap5`.
 
 ## Instalación manual
 

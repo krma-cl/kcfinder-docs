@@ -23,6 +23,7 @@ $_LOCALS['search'] = array(
     'maxEntries' => 25000,
     'timeoutMs' => 1500,
     'debounceMs' => 350,
+    'scope' => 'global',
 );
 ```
 
@@ -34,6 +35,7 @@ $_LOCALS['search'] = array(
 | `maxEntries` | `25000` | Entradas examinadas como máximo por solicitud. |
 | `timeoutMs` | `1500` | Presupuesto aproximado del recorrido. |
 | `debounceMs` | `350` | Pausa después de escribir antes de buscar. |
+| `scope` | `global` | Busca en toda la raíz autorizada; usa `current` para limitarla a la carpeta activa. |
 
 `Enter` consulta inmediatamente, `Escape` limpia el término y el botón de cierre restaura el árbol normal.
 
@@ -41,8 +43,12 @@ $_LOCALS['search'] = array(
 
 La consulta se ejecuta sólo bajo la raíz autorizada del tipo activo, omite enlaces simbólicos y exige el token CSRF de la sesión. Nunca devuelve rutas físicas.
 
+La respuesta informa por separado carpetas y archivos coincidentes, conserva la
+ruta completa de cada resultado e indica si el recorrido se truncó por
+`maxResults`, `maxEntries` o `timeoutMs`.
+
 Para árboles muy grandes, almacenamiento de red o adaptadores remotos, aumenta `minChars`, reduce los límites o mantén la función desactivada hasta disponer de un índice propio. La búsqueda integrada está pensada para bibliotecas locales pequeñas y medianas.
 
 ## Tema Bootstrap 5
 
-El tema Bootstrap 5 `0.2.0` presenta el buscador, sus estados y contadores con la misma altura y lenguaje visual de la barra principal. El tema no ejecuta el recorrido: toda la política continúa en el núcleo.
+El tema Bootstrap 5 `0.3.0` presenta el buscador, sus estados y contadores con la misma altura y lenguaje visual de la barra principal. El tema no ejecuta el recorrido: toda la política continúa en el núcleo.

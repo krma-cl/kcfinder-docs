@@ -6,12 +6,12 @@ El adaptador oficial conecta Laravel Storage, Gates y eventos con el selector in
 
 - PHP 8.2 o superior.
 - Laravel 12 o 13.
-- KCFinder 4.6 o superior desplegado mediante una publicación web controlada.
+- KCFinder 4.8.1 o superior.
 
 ## 1. Instalar el adaptador
 
 ```bash
-composer require krma-cl/kcfinder-laravel:^1.2.1
+composer require krma-cl/kcfinder-laravel:^1.3.1
 php artisan vendor:publish --tag=kcfinder-config
 ```
 
@@ -20,10 +20,11 @@ php artisan vendor:publish --tag=kcfinder-config
 ```dotenv
 KCFINDER_DISK=public
 KCFINDER_URL_PREFIX=/storage
-KCFINDER_BROWSER_URL=/vendor/kcfinder/browse.php
+KCFINDER_BROWSER_URL=/kcfinder/browse.php
 ```
 
-El valor de `KCFINDER_BROWSER_URL` debe apuntar a tu publicación controlada del navegador; no conviertas todo `vendor` en una raíz pública.
+El valor de `KCFINDER_BROWSER_URL` apunta al puente HTTP optativo. No conviertas
+todo `vendor` en una raíz pública.
 
 ## 3. Autorizar selecciones
 
@@ -94,7 +95,11 @@ return response()->json($result, $result->httpStatus());
 }
 ```
 
-Los eventos disponibles son `FileUploaded`, `FileEdited`, `FileMoved`, `FileRenamed`, `FileDeleted` y `DirectoryCreated`. Los eventos de archivo incluyen metadatos, checksum SHA-256 y usuario autenticado; mover y renombrar incluyen las rutas anterior y nueva.
+Los eventos disponibles son `FileUploaded`, `FileEdited`, `FileCopied`,
+`FileMoved`, `FileRenamed`, `FileDeleted`, `DirectoryCreated`,
+`DirectoryRenamed` y `DirectoryDeleted`. Los eventos de archivo incluyen
+metadatos, checksum SHA-256 y usuario autenticado; copiar, mover y renombrar
+incluyen las rutas anterior y nueva.
 
 Para eliminar, mover o renombrar, captura el estado antes de modificar el almacenamiento:
 
@@ -113,24 +118,43 @@ Esto permite sincronizar catálogos y auditorías por evento sin volver a recorr
 El formato estructurado es optativo y no altera las respuestas históricas ni el JavaScript del navegador. Los métodos `report*` siguen disponibles para endpoints JSON propios.
 :::
 
-## 7. Conectar automáticamente el navegador clásico
+## 7. Habilitar el navegador clásico autenticado
 
-KCFinder 4.6 notifica sus operaciones mediante un observador neutral. El adaptador 1.2 registra un puente que toma snapshots y emite los eventos Laravel automáticamente.
-
-Si el navegador clásico se ejecuta dentro de una aplicación Laravel ya inicializada, agrega en `conf/config.local.php`:
+El adaptador 1.3 incorpora un puente HTTP oficial desactivado de forma
+predeterminada. En `config/kcfinder.php`:
 
 ```php
-use KCFinder\Contract\OperationObserverInterface;
-
-$_LOCALS['_operationObserver'] = app(OperationObserverInterface::class);
+'http' => [
+    'enabled' => true,
+    'prefix' => 'kcfinder',
+    'middleware' => ['web', 'auth', 'can:manage-files'],
+    // conserva aquí session, headers y runtime publicados por el paquete
+],
 ```
 
-El puente cubre:
+```dotenv
+KCFINDER_HTTP_ENABLED=true
+KCFINDER_SESSION_PATH=/ruta/escribible/kcfinder-sessions
+KCFINDER_UPLOAD_URL=/storage
+```
+
+La interfaz queda en `/kcfinder/browse.php`. El puente autoriza mediante Gate,
+inicia una sesión nativa aislada, sincroniza el CSRF desde la primera petición,
+inyecta el observador oficial y aplica cabeceras configurables de CSP,
+`nosniff` y referrer policy.
+
+::: warning Almacenamiento local
+El navegador clásico edita imágenes y archivos mediante rutas físicas. Este
+puente HTTP requiere un disco local de Laravel. Los descriptores y resolvedores
+de URL sí pueden continuar usando S3 u otros discos remotos.
+:::
+
+El observador cubre:
 
 - cargas normales, múltiples y mediante arrastre;
 - edición y recorte de imágenes;
-- movimiento, renombrado y eliminación;
-- creación de carpetas;
+- copia, movimiento, renombrado y eliminación;
+- creación, renombrado y eliminación recursiva de carpetas;
 - operaciones masivas, con un evento por archivo exitoso.
 
 Mover, renombrar y eliminar capturan el snapshot autorizado antes de modificar el almacenamiento. Si un listener secundario falla, KCFinder registra el error, pero no responde falsamente que la operación principal fracasó.
@@ -139,7 +163,21 @@ Mover, renombrar y eliminar capturan el snapshot autorizado antes de modificar e
 Cuando el puente automático esté habilitado, no llames además a `reportUploaded()`, `reportRenamed()` u otro método `report*` para la misma operación.
 :::
 
-Si `browse.php` todavía funciona como un script completamente independiente, mantenlo detrás de autenticación y utiliza temporalmente los métodos explícitos. No inicialices Laravel por segunda vez desde `config.local.php`.
+No edites `vendor`, no inicialices Laravel por segunda vez desde
+`config.local.php` y no agregues manualmente el observador cuando uses este
+puente.
+
+## 8. Publicar recursos y el tema
+
+```bash
+composer require krma-cl/kcfinder-bootstrap5-theme:^0.3
+php artisan kcfinder:install-assets
+php artisan kcfinder:clear-cache
+```
+
+El primer comando Artisan copia únicamente recursos web seguros y detecta el
+tema Composer instalado; no publica scripts PHP desde `vendor`. El manifiesto
+resultante registra las versiones del núcleo y del tema.
 
 ::: tip Seguridad
 El Gate se evalúa antes de resolver metadatos del archivo. Mantén la autorización en el servidor aunque la interfaz oculte operaciones.
