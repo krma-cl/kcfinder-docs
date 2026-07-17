@@ -46,3 +46,18 @@ No utilices el ejemplo predeterminado como sistema de autenticación. Autoriza a
 ## 4. Comprobar el flujo
 
 Verifica inicio de sesión, navegación, subida, miniaturas, descarga, operaciones AJAX y cierre de sesión antes de exponer la integración a usuarios finales.
+
+## 5. Instalar el tema Bootstrap 5 con Composer
+
+El tema es opcional y se versiona por separado:
+
+```bash
+composer require krma-cl/kcfinder-bootstrap5-theme:^0.3.1
+vendor/bin/kcfinder-theme-install --target=/ruta/publica/kcfinder/themes
+```
+
+Activa después `bootstrap5` en la configuración. El publicador escribe en la
+carpeta de la aplicación: no modifica el núcleo ni deja la instalación
+dependiente de una copia manual dentro de `vendor`.
+
+[Ver instalación, actualización y raíces externas →](../themes/bootstrap5)

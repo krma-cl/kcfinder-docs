@@ -51,4 +51,4 @@ Para árboles muy grandes, almacenamiento de red o adaptadores remotos, aumenta 
 
 ## Tema Bootstrap 5
 
-El tema Bootstrap 5 `0.3.0` presenta el buscador, sus estados y contadores con la misma altura y lenguaje visual de la barra principal. El tema no ejecuta el recorrido: toda la política continúa en el núcleo.
+El tema Bootstrap 5 `0.3.1` presenta el buscador, sus estados y contadores con la misma altura y lenguaje visual de la barra principal. El tema no ejecuta el recorrido: toda la política continúa en el núcleo.

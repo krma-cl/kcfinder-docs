@@ -6,12 +6,12 @@ El adaptador oficial conecta Laravel Storage, Gates y eventos con el selector in
 
 - PHP 8.2 o superior.
 - Laravel 12 o 13.
-- KCFinder 4.8.1 o superior.
+- KCFinder 4.9 o superior.
 
 ## 1. Instalar el adaptador
 
 ```bash
-composer require krma-cl/kcfinder-laravel:^1.3.1
+composer require krma-cl/kcfinder-laravel:^1.4
 php artisan vendor:publish --tag=kcfinder-config
 ```
 
@@ -170,14 +170,16 @@ puente.
 ## 8. Publicar recursos y el tema
 
 ```bash
-composer require krma-cl/kcfinder-bootstrap5-theme:^0.3
+composer require krma-cl/kcfinder-bootstrap5-theme:^0.3.1
 php artisan kcfinder:install-assets
 php artisan kcfinder:clear-cache
 ```
 
-El primer comando Artisan copia únicamente recursos web seguros y detecta el
-tema Composer instalado; no publica scripts PHP desde `vendor`. El manifiesto
-resultante registra las versiones del núcleo y del tema.
+El adaptador detecta el tema Composer y lo sirve mediante la misma ruta
+autenticada del navegador clásico. El comando Artisan publica únicamente los
+recursos web propios del puente y genera un manifiesto con las versiones del
+núcleo y del tema; no copia scripts PHP a la raíz pública ni modifica
+`vendor`.
 
 ::: tip Seguridad
 El Gate se evalúa antes de resolver metadatos del archivo. Mantén la autorización en el servidor aunque la interfaz oculte operaciones.

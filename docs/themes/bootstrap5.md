@@ -7,27 +7,65 @@ description: Instalación y activación del tema Bootstrap 5 para KCFinder.
 
 El paquete `krma-cl/kcfinder-bootstrap5-theme` ofrece una interfaz responsiva y moderna para KCFinder 4.x. Incluye localmente Bootstrap 5.3 y Bootstrap Icons; no realiza peticiones a CDN.
 
-La versión `0.3.0` también se distribuye mediante Composer e incluye
-`VERSION` y un manifiesto reproducible con hashes SHA-256. Conserva la
-presentación de búsqueda, el separador redimensionable y los ajustes visuales
-de la versión anterior.
+Desde la versión `0.3.1` también se distribuye mediante Composer. Incluye
+`VERSION`, un manifiesto reproducible con hashes SHA-256 y un publicador
+neutral para instalar el tema fuera de `vendor`. Conserva la presentación de
+búsqueda, el separador redimensionable y los ajustes visuales de la versión
+anterior.
 
 ## Instalación con Composer
 
 ```bash
-composer require krma-cl/kcfinder-bootstrap5-theme:^0.3
+composer require krma-cl/kcfinder-bootstrap5-theme:^0.3.1
 ```
 
-En Laravel 12 o 13, el adaptador 1.3.1 puede publicarlo automáticamente:
+### Standalone PHP
+
+Publica el tema en la carpeta `themes` de la instalación:
+
+```bash
+vendor/bin/kcfinder-theme-install --target=/ruta/publica/kcfinder/themes
+```
+
+El comando escribe `themes/bootstrap5` de forma atómica y conserva una copia
+anterior si la publicación no puede completarse. Usa `--force` para reemplazar
+una instalación existente.
+
+KCFinder 4.9 también admite raíces externas confiables mediante `_themeRoots`
+cuando la aplicación anfitriona prefiera no publicar el tema:
+
+```php
+$_LOCALS['_themeRoots'] = array(
+    'bootstrap5' => dirname(__DIR__) . '/vendor/krma-cl/kcfinder-bootstrap5-theme/dist/bootstrap5',
+);
+```
+
+La ruta debe ser absoluta, estar definida por el servidor y nunca provenir de
+la consulta del navegador.
+
+### Laravel
+
+Laravel 12 o 13 con el adaptador 1.4 detecta el paquete Composer y lo monta
+automáticamente en el navegador autenticado:
 
 ```bash
 php artisan kcfinder:install-assets
 php artisan kcfinder:clear-cache
 ```
 
-En una instalación independiente, copia
-`vendor/krma-cl/kcfinder-bootstrap5-theme/dist/bootstrap5` a
-`themes/bootstrap5`.
+No copia PHP del tema al directorio público ni modifica el núcleo instalado en
+`vendor`.
+
+### Symfony
+
+El bundle 1.1 incorpora un publicador equivalente:
+
+```bash
+php bin/console kcfinder:install-theme
+```
+
+El destino predeterminado es `public/kcfinder/themes`. Puede cambiarse con
+`kcfinder.theme_directory`.
 
 ## Instalación manual
 
@@ -54,7 +92,8 @@ cache/theme_bootstrap5.js
 
 ## Actualización
 
-Sustituye únicamente `themes/bootstrap5` por la nueva distribución y limpia los dos archivos de caché del tema. Tus uploads y la configuración del núcleo no deben modificarse.
+Repite el publicador correspondiente y limpia los dos archivos de caché del
+tema. Tus uploads y la configuración del núcleo no deben modificarse.
 
 ## Comprobaciones recomendadas
 
