@@ -11,7 +11,7 @@ El adaptador oficial conecta Laravel Storage, Gates y eventos con el selector in
 ## 1. Instalar el adaptador
 
 ```bash
-composer require krma-cl/kcfinder-laravel:^1.4
+composer require krma-cl/kcfinder-laravel:^1.4.1
 php artisan vendor:publish --tag=kcfinder-config
 ```
 
@@ -120,7 +120,7 @@ El formato estructurado es optativo y no altera las respuestas históricas ni el
 
 ## 7. Habilitar el navegador clásico autenticado
 
-El adaptador 1.3 incorpora un puente HTTP oficial desactivado de forma
+El adaptador 1.4.1 incorpora un puente HTTP oficial desactivado de forma
 predeterminada. En `config/kcfinder.php`:
 
 ```php
@@ -142,6 +142,12 @@ La interfaz queda en `/kcfinder/browse.php`. El puente autoriza mediante Gate,
 inicia una sesión nativa aislada, sincroniza el CSRF desde la primera petición,
 inyecta el observador oficial y aplica cabeceras configurables de CSP,
 `nosniff` y referrer policy.
+
+La versión 1.4.1 sirve `js/index.php`, `css/index.php` y los dos bundles del
+tema sin ejecutar los minificadores PHP heredados dentro del proceso Laravel.
+También proporciona temporalmente `SCRIPT_FILENAME`, `HTTP_HOST` y `HTTPS` a
+los entrypoints funcionales y restaura sus valores al terminar. Esto evita que
+un bundle cacheado finalice prematuramente la respuesta Laravel.
 
 ::: warning Almacenamiento local
 El navegador clásico edita imágenes y archivos mediante rutas físicas. Este
@@ -180,6 +186,15 @@ autenticada del navegador clásico. El comando Artisan publica únicamente los
 recursos web propios del puente y genera un manifiesto con las versiones del
 núcleo y del tema; no copia scripts PHP a la raíz pública ni modifica
 `vendor`.
+
+Desde 1.4.1 el comando también genera bundles estáticos bajo `bundles/`. Después
+de actualizar desde 1.4.0, vuelve a publicarlos:
+
+```bash
+composer require krma-cl/kcfinder-laravel:^1.4.1
+php artisan kcfinder:install-assets --force
+php artisan kcfinder:clear-cache
+```
 
 ::: tip Seguridad
 El Gate se evalúa antes de resolver metadatos del archivo. Mantén la autorización en el servidor aunque la interfaz oculte operaciones.
