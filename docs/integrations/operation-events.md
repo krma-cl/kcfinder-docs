@@ -20,7 +20,7 @@ Si un observador falla después de una mutación, KCFinder registra el error y c
 
 ## Laravel
 
-El adaptador `krma-cl/kcfinder-laravel:^1.4.2` incluye el puente oficial. Al
+El adaptador `krma-cl/kcfinder-laravel:^1.4.3` incluye el puente oficial. Al
 habilitar su ruta HTTP autenticada, el paquete inyecta automáticamente la
 implementación proporcionada por el contenedor mediante la configuración de
 ejecución confiable de KCFinder 4.9:

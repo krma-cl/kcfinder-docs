@@ -11,7 +11,7 @@ El adaptador oficial conecta Laravel Storage, Gates y eventos con el selector in
 ## 1. Instalar el adaptador
 
 ```bash
-composer require krma-cl/kcfinder-laravel:^1.4.2
+composer require krma-cl/kcfinder-laravel:^1.4.3
 php artisan vendor:publish --tag=kcfinder-config
 ```
 
@@ -120,7 +120,7 @@ El formato estructurado es optativo y no altera las respuestas históricas ni el
 
 ## 7. Habilitar el navegador clásico autenticado
 
-El adaptador 1.4.2 incorpora un puente HTTP oficial desactivado de forma
+El adaptador 1.4.3 incorpora un puente HTTP oficial desactivado de forma
 predeterminada. En `config/kcfinder.php`:
 
 ```php
@@ -143,7 +143,7 @@ inicia una sesión nativa aislada, sincroniza el CSRF desde la primera petición
 inyecta el observador oficial y aplica cabeceras configurables de CSP,
 `nosniff` y referrer policy.
 
-La versión 1.4.2 sirve JavaScript y CSS mediante endpoints virtuales y
+La versión 1.4.3 sirve JavaScript y CSS mediante endpoints virtuales y
 versionados bajo `browser-assets/`, sin ejecutar los minificadores PHP
 heredados dentro del proceso Laravel. De este modo, Apache no confunde
 `js/index.php` o `css/index.php` con archivos físicos ausentes cuando los
@@ -155,6 +155,11 @@ Los entrypoints funcionales reciben temporalmente `SCRIPT_FILENAME`,
 `HTTP_HOST` y `HTTPS`; el puente restaura sus valores al terminar. Esto evita
 que un bundle cacheado finalice prematuramente la respuesta Laravel o que el
 navegador quede sin jQuery antes de iniciar el tema.
+
+Las referencias relativas `url(...)` de los bundles CSS se reajustan hacia los
+directorios estáticos publicados. Los iconos del tema Bootstrap 5 resuelven
+desde `themes/bootstrap5/img/` y `Jcrop.gif`, desde `css/`. Las URLs embebidas,
+absolutas, externas, `blob:` y los fragmentos no se modifican.
 
 ::: warning Almacenamiento local
 El navegador clásico edita imágenes y archivos mediante rutas físicas. Este
@@ -198,7 +203,7 @@ El comando también genera bundles estáticos bajo `bundles/`. Después de
 actualizar una versión anterior, vuelve a publicarlos:
 
 ```bash
-composer require krma-cl/kcfinder-laravel:^1.4.2 --with-all-dependencies
+composer require krma-cl/kcfinder-laravel:^1.4.3
 php artisan kcfinder:install-assets --force
 php artisan kcfinder:clear-cache
 php artisan optimize:clear
