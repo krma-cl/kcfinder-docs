@@ -11,7 +11,7 @@ El adaptador oficial conecta Laravel Storage, Gates y eventos con el selector in
 ## 1. Instalar el adaptador
 
 ```bash
-composer require krma-cl/kcfinder-laravel:^1.4.1
+composer require krma-cl/kcfinder-laravel:^1.4.2
 php artisan vendor:publish --tag=kcfinder-config
 ```
 
@@ -120,7 +120,7 @@ El formato estructurado es optativo y no altera las respuestas históricas ni el
 
 ## 7. Habilitar el navegador clásico autenticado
 
-El adaptador 1.4.1 incorpora un puente HTTP oficial desactivado de forma
+El adaptador 1.4.2 incorpora un puente HTTP oficial desactivado de forma
 predeterminada. En `config/kcfinder.php`:
 
 ```php
@@ -143,11 +143,18 @@ inicia una sesión nativa aislada, sincroniza el CSRF desde la primera petición
 inyecta el observador oficial y aplica cabeceras configurables de CSP,
 `nosniff` y referrer policy.
 
-La versión 1.4.1 sirve `js/index.php`, `css/index.php` y los dos bundles del
-tema sin ejecutar los minificadores PHP heredados dentro del proceso Laravel.
-También proporciona temporalmente `SCRIPT_FILENAME`, `HTTP_HOST` y `HTTPS` a
-los entrypoints funcionales y restaura sus valores al terminar. Esto evita que
-un bundle cacheado finalice prematuramente la respuesta Laravel.
+La versión 1.4.2 sirve JavaScript y CSS mediante endpoints virtuales y
+versionados bajo `browser-assets/`, sin ejecutar los minificadores PHP
+heredados dentro del proceso Laravel. De este modo, Apache no confunde
+`js/index.php` o `css/index.php` con archivos físicos ausentes cuando los
+directorios de recursos ya están publicados. La localización se genera de
+forma segura y el HTML conserva el orden de ejecución: bundle base,
+`js_localize.php` y bundle del tema.
+
+Los entrypoints funcionales reciben temporalmente `SCRIPT_FILENAME`,
+`HTTP_HOST` y `HTTPS`; el puente restaura sus valores al terminar. Esto evita
+que un bundle cacheado finalice prematuramente la respuesta Laravel o que el
+navegador quede sin jQuery antes de iniciar el tema.
 
 ::: warning Almacenamiento local
 El navegador clásico edita imágenes y archivos mediante rutas físicas. Este
@@ -187,13 +194,14 @@ recursos web propios del puente y genera un manifiesto con las versiones del
 núcleo y del tema; no copia scripts PHP a la raíz pública ni modifica
 `vendor`.
 
-Desde 1.4.1 el comando también genera bundles estáticos bajo `bundles/`. Después
-de actualizar desde 1.4.0, vuelve a publicarlos:
+El comando también genera bundles estáticos bajo `bundles/`. Después de
+actualizar una versión anterior, vuelve a publicarlos:
 
 ```bash
-composer require krma-cl/kcfinder-laravel:^1.4.1
+composer require krma-cl/kcfinder-laravel:^1.4.2 --with-all-dependencies
 php artisan kcfinder:install-assets --force
 php artisan kcfinder:clear-cache
+php artisan optimize:clear
 ```
 
 ::: tip Seguridad
