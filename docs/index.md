@@ -24,11 +24,11 @@ outline: false
 
   <section class="kf-release">
     <div>
-      <span class="kf-release-label">Novedad · KCFinder 4.9 + tema 0.3.1</span>
-      <h2>Temas Composer sin modificar vendor.</h2>
-      <p>Standalone, Laravel y Symfony pueden instalar o montar el tema Bootstrap 5 desde su paquete independiente, conservando el núcleo ligero.</p>
+      <span class="kf-release-label">Novedad · KCFinder 4.10 + tema 0.4</span>
+      <h2>Mueve y adapta sin perder ligereza.</h2>
+      <p>Movimiento optativo por arrastre o menú, conflictos controlados, eventos de rutas y una paleta Bootstrap configurable fuera de vendor.</p>
     </div>
-    <a href="./themes/bootstrap5">Ver instalación del tema →</a>
+    <a href="./configuration/moving">Conocer KCFinder 4.10 →</a>
   </section>
 
   <section class="kf-pathways">

@@ -10,7 +10,11 @@ KCFinder incorpora un observador neutral y optativo en los puntos de éxito del 
 - eliminación;
 - creación, renombrado y eliminación recursiva de carpetas.
 
-Mover, renombrar y eliminar notifican una fase previa para capturar el estado anterior. Las operaciones masivas emiten una notificación individual solamente para cada archivo que fue modificado correctamente.
+Mover, renombrar y eliminar notifican una fase previa para capturar el estado
+anterior. Las operaciones masivas emiten una notificación individual solamente
+para cada archivo modificado correctamente. Desde KCFinder 4.10, mover una
+carpeta emite una operación con su ruta anterior y resultante para que los
+integradores actualicen referencias por prefijo.
 
 ## Compatibilidad
 

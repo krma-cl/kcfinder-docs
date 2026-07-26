@@ -188,7 +188,7 @@ puente.
 ## 8. Publicar recursos y el tema
 
 ```bash
-composer require krma-cl/kcfinder-bootstrap5-theme:^0.3.1
+composer require krma-cl/kcfinder-bootstrap5-theme:^0.4
 php artisan kcfinder:install-assets
 php artisan kcfinder:clear-cache
 ```

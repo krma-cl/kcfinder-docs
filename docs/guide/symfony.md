@@ -50,7 +50,7 @@ Instala el paquete opcional y publícalo en una carpeta pública controlada por 
 aplicación:
 
 ```bash
-composer require krma-cl/kcfinder-bootstrap5-theme:^0.3.1
+composer require krma-cl/kcfinder-bootstrap5-theme:^0.4
 php bin/console kcfinder:install-theme
 ```
 

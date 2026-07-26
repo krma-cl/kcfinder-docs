@@ -16,7 +16,9 @@ La configuración efectiva depende de la versión instalada. Este mapa resume la
 | `maxImageWidth` / `maxImageHeight` | Límites de imágenes | Ajustar a las necesidades reales de la aplicación |
 | `thumbWidth` / `thumbHeight` | Miniaturas | Dimensionar considerando calidad, memoria y volumen |
 | `theme` | Tema visual activo | Usar `default` o un tema instalado y probado |
+| `themeOptions` | Opciones visuales por tema | Utilizar únicamente contratos documentados, como la paleta Bootstrap 5 |
 | `search` | Búsqueda por nombre | Mantener desactivada o definir límites acordes al volumen |
+| `dragMove` | Movimiento directo | Mantener desactivado salvo que archivos y carpetas tengan permisos de movimiento explícitos |
 | `cookieDomain` | Alcance de cookies | Configurar un dominio, nunca un host con puerto |
 
 ## Configuración local

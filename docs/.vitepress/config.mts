@@ -76,6 +76,7 @@ export default defineConfig({
           items: [
             { text: 'Visión general', link: '/configuration/' },
             { text: 'Búsqueda', link: '/configuration/search' },
+            { text: 'Movimiento directo', link: '/configuration/moving' },
             { text: 'Uploads y URLs', link: '/configuration/storage' },
             { text: 'Imágenes y miniaturas', link: '/configuration/images' }
           ]
@@ -133,6 +134,7 @@ export default defineConfig({
           text: 'Proyecto',
           items: [
             { text: 'Roadmap', link: '/roadmap/' },
+            { text: 'Arrastre y papelera', link: '/roadmap/file-organization-and-trash' },
             { text: 'Contribuir', link: '/roadmap/contributing' }
           ]
         }

@@ -18,6 +18,10 @@ KCFinder Resurrected busca ser una continuación mantenida, orientada a segurida
 - Portal unificado de documentación.
 - Búsqueda optativa por nombre de carpetas y archivos, limitada y protegida con CSRF.
 - Recorte robusto ante coordenadas decimales y tema Bootstrap 5 con separador redimensionable.
+- Movimiento optativo por arrastre o **Mover a…**, conflictos controlados y
+  eventos de cambio de ruta en KCFinder 4.10.
+- Paleta semántica configurable y presentación del movimiento en el tema
+  Bootstrap 5 0.4.
 
 ## Próximas líneas
 
@@ -26,8 +30,20 @@ KCFinder Resurrected busca ser una continuación mantenida, orientada a segurida
 - Documentar extensiones y puntos estables del núcleo.
 - Mejorar la guía de migración desde instalaciones históricas personalizadas.
 - Mantener matrices de compatibilidad y avisos de nuevas versiones tecnológicas.
+- Añadir orden visual optativo de carpetas sin modificar sus rutas.
+- Incorporar una papelera privada y recuperable, con restauración y borrado definitivo.
 - Preparar jQuery 4 y jQuery UI 1.14 en una fase separada, reemplazando primero las APIs retiradas sin romper jQuery 3.7.
 - Eliminar gradualmente los XHR síncronos mediante flujos asíncronos probados, no mediante un cambio mecánico de bandera.
+
+La propuesta de [organización por arrastre y papelera](file-organization-and-trash.md)
+explica el alcance y las garantías que deben conservarse. El movimiento forma
+parte de KCFinder 4.10; el orden visual y la papelera siguen siendo capacidades
+futuras y desactivadas.
+
+Las actualizaciones tecnológicas se trabajan junto con ciclos funcionales
+relacionados, pero en cambios separados. Sass 1.101 se validó con el tema 0.4;
+PHPUnit 13 y jQuery 4 todavía requieren pruebas específicas por tratarse de
+saltos mayores.
 
 El roadmap describe una dirección, no una promesa de fechas. Las prioridades se ajustan según seguridad, compatibilidad, uso real y contribuciones de la comunidad.
 

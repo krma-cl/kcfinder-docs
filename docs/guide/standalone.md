@@ -52,7 +52,7 @@ Verifica inicio de sesión, navegación, subida, miniaturas, descarga, operacion
 El tema es opcional y se versiona por separado:
 
 ```bash
-composer require krma-cl/kcfinder-bootstrap5-theme:^0.3.1
+composer require krma-cl/kcfinder-bootstrap5-theme:^0.4
 vendor/bin/kcfinder-theme-install --target=/ruta/publica/kcfinder/themes
 ```
 

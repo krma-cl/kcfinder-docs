@@ -7,7 +7,9 @@ description: Instalación y activación del tema Bootstrap 5 para KCFinder.
 
 El paquete `krma-cl/kcfinder-bootstrap5-theme` ofrece una interfaz responsiva y moderna para KCFinder 4.x. Incluye localmente Bootstrap 5.3 y Bootstrap Icons; no realiza peticiones a CDN.
 
-Desde la versión `0.3.1` también se distribuye mediante Composer. Incluye
+Desde la versión `0.3.1` también se distribuye mediante Composer. La versión
+`0.4.0` añade la presentación del movimiento directo y una paleta semántica
+configurable desde KCFinder 4.10. Incluye
 `VERSION`, un manifiesto reproducible con hashes SHA-256 y un publicador
 neutral para instalar el tema fuera de `vendor`. Conserva la presentación de
 búsqueda, el separador redimensionable y los ajustes visuales de la versión
@@ -16,7 +18,7 @@ anterior.
 ## Instalación con Composer
 
 ```bash
-composer require krma-cl/kcfinder-bootstrap5-theme:^0.3.1
+composer require krma-cl/kcfinder-bootstrap5-theme:^0.4
 ```
 
 ### Standalone PHP
@@ -31,7 +33,7 @@ El comando escribe `themes/bootstrap5` de forma atómica y conserva una copia
 anterior si la publicación no puede completarse. Usa `--force` para reemplazar
 una instalación existente.
 
-KCFinder 4.9 también admite raíces externas confiables mediante `_themeRoots`
+KCFinder 4.9 o superior admite raíces externas confiables mediante `_themeRoots`
 cuando la aplicación anfitriona prefiera no publicar el tema:
 
 ```php
@@ -42,6 +44,27 @@ $_LOCALS['_themeRoots'] = array(
 
 La ruta debe ser absoluta, estar definida por el servidor y nunca provenir de
 la consulta del navegador.
+
+## Paleta semántica
+
+KCFinder 4.10 puede personalizar el tema sin editar los archivos publicados:
+
+```php
+$_LOCALS['themeOptions']['bootstrap5']['colors'] = array(
+    'primary' => '#0057B8',
+    'secondary' => '#667085',
+    'success' => '#198754',
+    'danger' => '#B42318',
+    'warning' => '#F79009',
+    'light' => '#F8F9FA',
+    'dark' => '#101828',
+);
+```
+
+Sólo se aceptan esos siete nombres y valores `#RRGGBB`. Los valores inválidos
+se ignoran y nunca se convierten en declaraciones CSS arbitrarias. Como la
+configuración pertenece a la aplicación, permanece intacta al actualizar el
+tema mediante Composer.
 
 ### Laravel
 
@@ -103,6 +126,7 @@ tema. Tus uploads y la configuración del núcleo no deben modificarse.
 - Radios, checkboxes y selector de idioma.
 - Modos lista y miniaturas.
 - Menús contextuales, preferencias y ventanas modales.
+- Ayudante de arrastre, destinos de carpeta y diálogo de conflictos en KCFinder 4.10.
 - Selección de archivos desde CKEditor, TinyMCE o una integración propia.
 
 Consulta los detalles y versiones exactas en el [repositorio del tema](https://github.com/krma-cl/kcfinder-bootstrap5-theme).
