@@ -231,7 +231,7 @@ body {
 .kf-product-shot {
   position: relative;
   min-width: 0;
-  aspect-ratio: 2.45;
+  /*aspect-ratio: 2.45;*/
   margin: 0;
   overflow: hidden;
   border: 1px solid #aebdc7;
@@ -242,7 +242,7 @@ body {
 
 .kf-product-shot img {
   display: block;
-  width: 135%;
+  width: 100%;
   max-width: none;
   height: auto;
 }
