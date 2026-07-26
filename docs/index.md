@@ -17,7 +17,7 @@ outline: false
       </div>
     </div>
     <figure class="kf-product-shot">
-      <img src="/kcfinder-bootstrap5-interface.png" alt="Interfaz real de KCFinder Resurrected con el tema Bootstrap 5: árbol de carpetas, barra de acciones, opciones de visualización y selector de idioma." />
+      <img src="/kcfinder-4.10.0.png" alt="Interfaz real de KCFinder Resurrected con el tema Bootstrap 5: árbol de carpetas, barra de acciones, opciones de visualización y selector de idioma." />
       <figcaption>Interfaz real del tema Bootstrap 5</figcaption>
     </figure>
   </section>
